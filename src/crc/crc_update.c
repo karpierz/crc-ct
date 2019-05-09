@@ -36,13 +36,12 @@ crc_t func_name##(const void* data, size_t data_len,        \
     crc_type  _crc = (crc_type)(crc);                       \
     const unsigned char* buff = (const unsigned char*)data; \
     while ( data_len-- )                                    \
-        _crc = _crc_table[(unsigned char)(_crc >>           \
-                          (width - 8)) ^ *buff++] ^         \
-               (_crc << 8);                                 \
-    return ( (crc_type)(_crc & WIDTH_MASK(width)) );        \
+        _crc = (_crc << 8) ^                                \
+               _crc_table[(unsigned char)(_crc >>           \
+                          (width - 8)) ^ *buff++];          \
+    _crc &= WIDTH_MASK(width);                              \
+    return ( _crc );                                        \
 }
-// int toRight = max(0, width - 8);
-// crc = (_table[(int)(((crc >> toRight) ^ data[i]) & 0xFF)] ^ (crc << 8));
 
 #define DEFINE_CRCR_UPDATE(func_name, width, crc_type) \
 crc_t func_name##(const void* data, size_t data_len,        \
@@ -52,9 +51,10 @@ crc_t func_name##(const void* data, size_t data_len,        \
     crc_type  _crc = (crc_type)(crc);                       \
     const unsigned char* buff = (const unsigned char*)data; \
     while ( data_len-- )                                    \
-        _crc = _crc_table[(unsigned char)_crc ^ *buff++] ^  \
-               (_crc >> 8);                                 \
-    return ( (crc_type)(_crc & WIDTH_MASK(width)) );        \
+        _crc = (_crc >> 8) ^                                \
+               _crc_table[(unsigned char)_crc ^ *buff++];   \
+    _crc &= WIDTH_MASK(width);                              \
+    return ( _crc );                                        \
 }
 
 DEFINE_CRC8_UPDATE(crc8_update)

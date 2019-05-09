@@ -33,14 +33,14 @@
 extern "C" {
 #endif
 
-void crc8_table(crc_t  poly, short refin, short refout, crc_t crc_table[]);
-void crc16_table(crc_t poly, short refin, short refout, crc_t crc_table[]);
-void crc24_table(crc_t poly, short refin, short refout, crc_t crc_table[]);
-void crc32_table(crc_t poly, short refin, short refout, crc_t crc_table[]);
-void crc40_table(crc_t poly, short refin, short refout, crc_t crc_table[]);
-void crc48_table(crc_t poly, short refin, short refout, crc_t crc_table[]);
-void crc56_table(crc_t poly, short refin, short refout, crc_t crc_table[]);
-void crc64_table(crc_t poly, short refin, short refout, crc_t crc_table[]);
+void crc8_table(crc_t  poly, short refin, crc_t crc_table[]);
+void crc16_table(crc_t poly, short refin, crc_t crc_table[]);
+void crc24_table(crc_t poly, short refin, crc_t crc_table[]);
+void crc32_table(crc_t poly, short refin, crc_t crc_table[]);
+void crc40_table(crc_t poly, short refin, crc_t crc_table[]);
+void crc48_table(crc_t poly, short refin, crc_t crc_table[]);
+void crc56_table(crc_t poly, short refin, crc_t crc_table[]);
+void crc64_table(crc_t poly, short refin, crc_t crc_table[]);
 
 #ifdef __cplusplus
 }

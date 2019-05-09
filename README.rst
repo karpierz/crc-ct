@@ -1,5 +1,5 @@
-renumerate
-==========
+crc-ct
+======
 
 Reverse enumerate.
 
@@ -60,22 +60,22 @@ Prerequisites:
 
 To install run::
 
-    python -m pip install --upgrade renumerate
+    python -m pip install --upgrade crc-ct
 
 Development
 ===========
 
-Visit `development page <https://github.com/karpierz/renumerate>`__
+Visit `development page <https://github.com/karpierz/crc-ct>`__
 
 Installation from sources:
 
-Clone the `sources <https://github.com/karpierz/renumerate>`__ and run::
+Clone the `sources <https://github.com/karpierz/crc-ct>`__ and run::
 
-    python -m pip install ./renumerate
+    python -m pip install ./crc-ct
 
 or on development mode::
 
-    python -m pip install --editable ./renumerate
+    python -m pip install --editable ./crc-ct
 
 Prerequisites:
 

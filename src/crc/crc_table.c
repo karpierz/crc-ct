@@ -18,9 +18,8 @@
 
 #define DEFINE_CRC_TABLE(width, crc_type) \
 void crc##width##_table(crc_t poly,                \
-                            short refin,           \
-                            short refout,          \
-                            crc_t crc_table[])     \
+                        short refin,               \
+                        crc_t crc_table[])         \
 {                                                  \
     crc_type  _poly = (crc_type)(poly);            \
     crc_type* _crc_table = (crc_type*)(crc_table); \
@@ -28,7 +27,7 @@ void crc##width##_table(crc_t poly,                \
     _poly &= WIDTH_MASK(width);                    \
     for ( idx = 0; idx < 256; ++idx )              \
     {                                              \
-        crc_type elem = idx;                       \
+        crc_type elem = (crc_type)idx;             \
         if ( refin )                               \
             BITS_REVERSE(elem, width, crc_type)    \
         else if ( width > 8 )                      \
@@ -40,7 +39,7 @@ void crc##width##_table(crc_t poly,                \
             else                                   \
                 elem <<= 1;                        \
         }                                          \
-        if ( refout )                              \
+        if ( refin )                               \
             BITS_REVERSE(elem, width, crc_type)    \
         elem &= WIDTH_MASK(width);                 \
         _crc_table[idx] = elem;                    \

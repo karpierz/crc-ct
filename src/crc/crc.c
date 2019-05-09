@@ -23,7 +23,6 @@
 
 typedef void (*crc_table_func_t)(crc_t poly,
                                  short refin,
-                                 short refout,
                                  crc_t crc_table[]);
 
 static const crc_table_func_t crc_table_funcs[] = {
@@ -85,11 +84,8 @@ const crc_model_t crc_model(const char* name,
     model.check  = check;
 
     idx = model.width / 8 - 1;
-    crc_table_funcs[idx](model.poly,
-                         model.refin,
-                         model.refout,
-                         model.crc_table);
-    model.crc_update_func = (model.refout
+    crc_table_funcs[idx](model.poly, model.refin, model.crc_table);
+    model.crc_update_func = (model.refin
                              ? crcr_update_funcs
                              : crc_update_funcs)[idx];
     return ( model );
@@ -108,7 +104,7 @@ const crc_model_t* crc_model_by_name(const char* name,
 crc_t crc_init(const crc_model_t* crc_model)
 {
     crc_t crc = crc_model->init;
-    if ( crc_model->refout )
+    if ( crc_model->refin )
         BITS_REVERSE(crc, crc_model->width, crc_t)
     return ( crc );
 }
@@ -122,8 +118,11 @@ crc_t crc_update(const crc_model_t* crc_model,
 
 crc_t crc_finalize(const crc_model_t* crc_model, crc_t crc)
 {
+    if ( crc_model->refin ^ crc_model->refout )
+        BITS_REVERSE(crc, crc_model->width, crc_t)
     crc ^= crc_model->xorout;
-    return ( crc & WIDTH_MASK(crc_model->width) );
+    crc &= WIDTH_MASK(crc_model->width);
+    return ( crc );
 }
 
 #include "crc_predef.c"
@@ -138,11 +137,8 @@ const crc_model_t* crc_predefined_model_by_name(const char* name)
         for ( model = crc_predefined_models ; model->width ; ++model )
         {
             int idx = model->width / 8 - 1;
-            crc_table_funcs[idx](model->poly,
-                                 model->refin,
-                                 model->refout,
-                                 model->crc_table);
-            model->crc_update_func = (model->refout
+            crc_table_funcs[idx](model->poly, model->refin, model->crc_table);
+            model->crc_update_func = (model->refin
                                       ? crcr_update_funcs
                                       : crc_update_funcs)[idx];
         }
