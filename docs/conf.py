@@ -9,7 +9,7 @@ import os
 
 top_dir = os.path.join(os.path.dirname(__file__), os.pardir)
 
-with open(os.path.join(top_dir, "src", "jt", "jvm", "__about__.py")) as f:
+with open(os.path.join(top_dir, "src", "crc", "__about__.py")) as f:
     class about: exec(f.read(), None)
 
 def setup(app):
