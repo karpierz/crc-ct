@@ -7,21 +7,44 @@ from __future__ import absolute_import
 import sys
 from os import path
 from setuptools import setup, Extension
+from setuptools.command.build_ext import build_ext
 
-USE_CYTHON = True  # command line option, try-import, ...
+class BuildExt(build_ext):
 
-ext = ".pyx" if USE_CYTHON else ".c"
-ext_modules = [Extension(name="jt.jni.cython.jni",
-                         sources=["src/crc/cython/jni" + ext])]
-if ext == ".pyx":
-    from Cython.Build    import cythonize
-    from Cython.Compiler import Options
-    Options.docstrings         = False
-    Options.emit_code_comments = False
-    ext_modules = cythonize(ext_modules, language_level=sys.version_info[0])#, force=True)
+    compile_args = {
+        "msvc": ["/O2", "/WX", "/wd4996"],
+        "unix": ["-O3", "-g0", "-ffast-math"],
+    }
+    link_args = {
+        "msvc": ["/export:crc_model",
+                 "/export:crc_predefined_model_by_name",
+                 "/export:crc_model_by_name",
+                 "/export:crc_init",
+                 "/export:crc_update",
+                 "/export:crc_finalize"],
+        "unix": [],
+    }
 
-ext_modules += [Extension(name="jt.jni.capi.jni",
-                          sources=["src/crc/jni.c"])] if sys.version_info[0] >= 3 else []
+    def build_extensions(self):
+        cc_type = self.compiler.compiler_type
+        compile_args = self.compile_args.get(cc_type, self.compile_args["unix"])
+        link_args    = self.link_args.get(cc_type, self.link_args["unix"])
+        if cc_type == "msvc":
+            pass
+        elif cc_type == "unix":
+            pass
+        for ext in self.extensions:
+            ext.extra_compile_args = compile_args
+        for ext in self.extensions:
+            ext.extra_link_args = link_args
+        super(BuildExt, self).build_extensions()
+
+ext_modules = [Extension(name="crc.crc",
+                         sources=["src/crc/crc.c",
+                                  "src/crc/crc_table.c",
+                                  "src/crc/crc_update.c",
+                                  "src/crc/crc_py.c"],
+                         language="c")]
 
 top_dir = path.dirname(path.abspath(__file__))
 with open(path.join(top_dir, "src", "crc", "__about__.py")) as f:
@@ -41,4 +64,5 @@ setup(
     license          = about.__license__,
 
     ext_modules = ext_modules,
+    cmdclass    = dict(build_ext=BuildExt),
 )
