@@ -16,12 +16,7 @@ class BuildExt(build_ext):
         "unix": ["-O3", "-g0", "-ffast-math"],
     }
     link_args = {
-        "msvc": ["/export:crc_model",
-                 "/export:crc_predefined_model_by_name",
-                 "/export:crc_model_by_name",
-                 "/export:crc_init",
-                 "/export:crc_update",
-                 "/export:crc_finalize"],
+        "msvc": ["/DEF:src/crc/crc.def"],
         "unix": [],
     }
 
@@ -39,7 +34,7 @@ class BuildExt(build_ext):
             ext.extra_link_args = link_args
         super(BuildExt, self).build_extensions()
 
-ext_modules = [Extension(name="crc.crc",
+ext_modules = [Extension(name="crc._platform.crc",
                          sources=["src/crc/crc.c",
                                   "src/crc/crc_table.c",
                                   "src/crc/crc_update.c",

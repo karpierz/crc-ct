@@ -57,10 +57,17 @@ typedef struct
     crc_t xorout;            /* XOR this to output CRC.     */
     crc_t check;             /* CRC for the ASCII bytes "123456789". */
     /* Internals */
-    crc_t crc_table[256];
-    crc_t (*crc_update_func)(const void* data, size_t data_len,
-                             const crc_t crc_table[], crc_t crc);
+    crc_t _crc_table[256];
+    crc_t (*_crc_update_func)(const void* data, size_t data_len,
+                              const crc_t crc_table[], crc_t crc);
 } crc_model_t;
+
+/**
+ * Purpose:
+ *
+ *     Predefined CRC models.
+ */
+extern crc_model_t crc_predefined_models[];
 
 /**
  * Purpose:
@@ -135,7 +142,7 @@ crc_t crc_init(const crc_model_t* crc_model);
  *     \return               The updated CRC value.
  */
 crc_t crc_update(const crc_model_t* crc_model,
-                 const void *data, size_t data_len, crc_t crc);
+                 const void* data, size_t data_len, crc_t crc);
 
 /**
  * Purpose:

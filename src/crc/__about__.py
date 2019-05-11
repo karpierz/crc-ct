@@ -1,6 +1,6 @@
 # Copyright (c) 1994-2019 Adam Karpierz
-# Licensed under the MIT License
-# http://opensource.org/licenses/MIT
+# Licensed under the zlib/libpng License
+# http://opensource.org/licenses/zlib
 
 __all__ = ('__title__', '__summary__', '__uri__', '__version_info__',
            '__version__', '__author__', '__maintainer__', '__email__',
@@ -18,5 +18,5 @@ __author__       = "Adam Karpierz"
 __maintainer__   = "Adam Karpierz"
 __email__        = "adam@karpierz.net"
 __copyright__    = "Copyright (c) 1994-2019 {0}".format(__author__)
-__license__      = "MIT License ; {0}".format(
-                   "http://opensource.org/licenses/MIT")
+__license__      = "zlib/libpng License ; {0}".format(
+                   "http://opensource.org/licenses/zlib")

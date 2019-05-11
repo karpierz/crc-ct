@@ -27,7 +27,7 @@ crc_model_t crc_predefined_models[] = {
     /* name             width  poly        init        refin  refout xorout      check */
     /*---------------------------------------------------------------------------------*/
 
-    /* 8 bits*/                                                                                
+    /* 8 bits */                                                                                
     {"CRC-8",               8, 0x07,       0x00,       false, false, 0x00,       0xF4},
     {"CRC-8/AUTOSAR",       8, 0x2f,       0xff,       false, false, 0xff,       0xdf},
     {"CRC-8/CDMA2000",      8, 0x9B,       0xFF,       false, false, 0x00,       0xDA},
@@ -40,7 +40,7 @@ crc_model_t crc_predefined_models[] = {
     {"CRC-8/ROHC",          8, 0x07,       0xFF,       true,  true,  0x00,       0xD0},
     {"CRC-8/WCDMA",         8, 0x9B,       0x00,       true,  true,  0x00,       0x25},
 
-    /* 16 bits*/
+    /* 16 bits */
     {"CRC-16/IBM-3740",    16, 0x1021,     0xffff,     false, false, 0x0000,     0x29b1},
     {"CRC-16/AUTOSAR",     16, 0x1021,     0xffff,     false, false, 0x0000,     0x29b1}, /*Alias*/
     {"CRC-16/CCITT-FALSE", 16, 0x1021,     0xFFFF,     false, false, 0x0000,     0x29B1}, /*Alias*/
@@ -69,12 +69,12 @@ crc_model_t crc_predefined_models[] = {
                                                                                 
  /* {"crc-16-riello",      16, 0x1021,     0x554D,     true,  true,  0x0000,     0x63D0}, */
 
-    /* 24 bits*/                                                                                
+    /* 24 bits */                                                                                
     {"CRC-24",             24, 0x864CFB,   0xB704CE,   false, false, 0x000000,   0x21CF02},
     {"CRC-24/FLEXRAY-A",   24, 0x5D6DCB,   0xFEDCBA,   false, false, 0x000000,   0x7979BD},
     {"CRC-24/FLEXRAY-B",   24, 0x5D6DCB,   0xABCDEF,   false, false, 0x000000,   0x1F23B8},
 
-    /* 32 bits*/                                                                                
+    /* 32 bits */                                                                                
     {"CRC-32",             32, 0x04C11DB7, 0xFFFFFFFF, true,  true,  0xFFFFFFFF, 0xCBF43926},
     {"CRC-32/AUTOSAR",     32, 0xf4acfb13, 0xffffffff, true,  true,  0xffffffff, 0x1697d06a},
     {"CRC-32/BZIP2",       32, 0x04C11DB7, 0xFFFFFFFF, false, false, 0xFFFFFFFF, 0xFC891918},
@@ -86,10 +86,10 @@ crc_model_t crc_predefined_models[] = {
     {"CRC-32Q",            32, 0x814141AB, 0x00000000, false, false, 0x00000000, 0x3010BF7F},
     {"CRC-32/XFER",        32, 0x000000AF, 0x00000000, false, false, 0x00000000, 0xBD0BE338},
 
-    /* 40 bits*/                                                                                
+    /* 40 bits */                                                                                
     {"CRC-40/GSM", 40, 0x0004820009, 0x0000000000, false, false, 0xffffffffff, 0xd4164fc646},
 
-    /* 64 bits*/                                                                                
+    /* 64 bits */                                                                                
     {"CRC-64",     64, 0x42F0E1EBA9EA3693, 0x0000000000000000, false, false, 0x0000000000000000, 0x6C40DF5F0B497347},
     {"CRC-64/WE",  64, 0x42F0E1EBA9EA3693, 0xFFFFFFFFFFFFFFFF, false, false, 0xFFFFFFFFFFFFFFFF, 0x62EC59E3F1A4F00A},
     {"CRC-64/XZ",  64, 0x42F0E1EBA9EA3693, 0xFFFFFFFFFFFFFFFF, true,  true,  0xFFFFFFFFFFFFFFFF, 0x995DC9BBDF1939FA},

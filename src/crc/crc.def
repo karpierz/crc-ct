@@ -1,0 +1,12 @@
+; Copyright (c) 1994-2019 Adam Karpierz
+; Licensed under the zlib/libpng License
+; http://opensource.org/licenses/zlib
+
+EXPORTS
+    crc_init                     @1
+    crc_update                   @2
+    crc_finalize                 @3
+    crc_model                    @4
+    crc_model_by_name            @5
+    crc_predefined_model_by_name @6
+    crc_predefined_models        @7

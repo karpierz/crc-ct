@@ -5,8 +5,6 @@
 #include "../src/crc/crc_table.h"
 #include "../src/crc/crc_defs.h"
 
-extern crc_model_t crc_predefined_models[];
-
 typedef enum {false = 0, true = 1} bool;
 
 int main()
@@ -65,6 +63,7 @@ int main()
     }
 
     printf("\n");
+
     for ( crc_model = crc_models ; crc_model->width ; ++crc_model )
     {
         crc_t crc_result;

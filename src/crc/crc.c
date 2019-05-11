@@ -84,9 +84,9 @@ const crc_model_t crc_model(const char* name,
     model.check  = check;
 
     idx = model.width / 8 - 1;
-    crc_table_funcs[idx](model.poly, model.refin, model.crc_table);
-    model.crc_update_func = (model.refin
-                             ? crcr_update_funcs : crc_update_funcs)[idx];
+    crc_table_funcs[idx](model.poly, model.refin, model._crc_table);
+    model._crc_update_func =  (model.refin
+                              ? crcr_update_funcs : crc_update_funcs)[idx];
     return ( model );
 }
 
@@ -111,8 +111,8 @@ crc_t crc_init(const crc_model_t* crc_model)
 crc_t crc_update(const crc_model_t* crc_model,
                  const void* data, size_t data_len, crc_t crc)
 {
-    return ( crc_model->crc_update_func(data, data_len,
-                                        crc_model->crc_table, crc) );
+    return ( crc_model->_crc_update_func(data, data_len,
+                                         crc_model->_crc_table, crc) );
 }
 
 crc_t crc_finalize(const crc_model_t* crc_model, crc_t crc)
@@ -136,9 +136,9 @@ const crc_model_t* crc_predefined_model_by_name(const char* name)
         for ( model = crc_predefined_models ; model->width ; ++model )
         {
             int idx = model->width / 8 - 1;
-            crc_table_funcs[idx](model->poly, model->refin, model->crc_table);
-            model->crc_update_func = (model->refin
-                                      ? crcr_update_funcs : crc_update_funcs)[idx];
+            crc_table_funcs[idx](model->poly, model->refin, model->_crc_table);
+            model->_crc_update_func = (model->refin
+                                       ? crcr_update_funcs : crc_update_funcs)[idx];
         }
         ((char*)term->name)[0] = -1;
     }
