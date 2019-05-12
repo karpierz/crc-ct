@@ -13,8 +13,8 @@ Requirements
 
 + pip and setuptools
 
-  * http://pypi.python.org/pypi/pip
-  * http://pypi.python.org/pypi/setuptools
+  * http://pypi.org/project/pip/
+  * http://pypi.org/project/setuptools/
 
 Install
 -------

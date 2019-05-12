@@ -20,8 +20,8 @@ Prerequisites:
 
 + pip and setuptools
 
-  * http://pypi.python.org/pypi/pip
-  * http://pypi.python.org/pypi/setuptools
+  * http://pypi.org/project/pip/
+  * http://pypi.org/project/setuptools/
 
 To install run::
 
@@ -54,7 +54,7 @@ License
   | Copyright (c) 1994-2019 Adam Karpierz
   |
   | Licensed under the zlib/libpng License
-  | http://opensource.org/licenses/zlib
+  | http://opensource.org/licenses/zlib/
   | Please refer to the accompanying LICENSE file.
 
 Authors

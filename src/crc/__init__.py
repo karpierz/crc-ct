@@ -1,13 +1,12 @@
 # Copyright (c) 1994-2019 Adam Karpierz
 # Licensed under the zlib/libpng License
-# http://opensource.org/licenses/zlib
+# http://opensource.org/licenses/zlib/
 #
 # Purpose:
 #     Public Python API of CRC package.
 
 from __future__ import absolute_import
 
-import os
 import ctypes as ct
 
 from ._platform import CFUNC

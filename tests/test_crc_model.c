@@ -57,7 +57,7 @@ int main()
         crc_result = crc_init(crc_model);
         crc_result = crc_update(crc_model, check_seq, 9, crc_result);
         crc_result = crc_finalize(crc_model, crc_result);
-        printf("%20s: %016llX, (should be: %016llX), %s\n",
+        printf("%22s: %016llX, (should be: %016llX), %s\n",
                crc_model->name, (uint64_t)crc_result, (uint64_t)crc_model->check,
                (crc_result == crc_model->check) ? "Ok" : "Error!");
     }
@@ -70,7 +70,7 @@ int main()
         crc_result = crc_init(crc_model);
         crc_result = crc_update(crc_model, check_seq, 9, crc_result);
         crc_result = crc_finalize(crc_model, crc_result);
-        printf("%20s: %016llX, (should be: %016llX), %s\n",
+        printf("%22s: %016llX, (should be: %016llX), %s\n",
                crc_model->name, (uint64_t)crc_result, (uint64_t)crc_model->check,
                (crc_result == crc_model->check) ? "Ok" : "Error!");
     }
