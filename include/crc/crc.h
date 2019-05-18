@@ -154,7 +154,7 @@ crc_t crc_update(const crc_model_t* crc_model,
  *     \param[in] crc        The current CRC value.
  *     \return               The final   CRC value.
  */
-crc_t crc_finalize(const crc_model_t* crc_model, crc_t crc);
+crc_t crc_final(const crc_model_t* crc_model, crc_t crc);
 
 #ifdef __cplusplus
 }

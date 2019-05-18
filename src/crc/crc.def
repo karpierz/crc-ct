@@ -5,7 +5,7 @@
 EXPORTS
     crc_init                     @1
     crc_update                   @2
-    crc_finalize                 @3
+    crc_final                    @3
     crc_model                    @4
     crc_model_by_name            @5
     crc_predefined_model_by_name @6

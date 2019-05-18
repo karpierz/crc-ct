@@ -115,7 +115,7 @@ crc_t crc_update(const crc_model_t* crc_model,
                                          crc_model->_crc_table, crc) );
 }
 
-crc_t crc_finalize(const crc_model_t* crc_model, crc_t crc)
+crc_t crc_final(const crc_model_t* crc_model, crc_t crc)
 {
     if ( crc_model->refin ^ crc_model->refout )
         BITS_REVERSE(crc, crc_model->width, crc_t)
