@@ -2,7 +2,7 @@
 # Licensed under proprietary License
 # Please refer to the accompanying LICENSE file.
 
-from __future__ import absolute_import
+from __future__ import absolute_import, print_function
 
 import unittest
 import itertools

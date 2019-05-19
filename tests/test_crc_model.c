@@ -51,6 +51,7 @@ int main()
 
     /* Hack to initialize predefined models table */
     crc_predefined_model_by_name("");
+
     for ( crc_model = crc_predefined_models ; crc_model->width ; ++crc_model )
     {
         crc_t crc_result;
@@ -61,7 +62,6 @@ int main()
                crc_model->name, (uint64_t)crc_result, (uint64_t)crc_model->check,
                (crc_result == crc_model->check) ? "Ok" : "Error!");
     }
-
     printf("\n");
 
     for ( crc_model = crc_models ; crc_model->width ; ++crc_model )
@@ -74,4 +74,5 @@ int main()
                crc_model->name, (uint64_t)crc_result, (uint64_t)crc_model->check,
                (crc_result == crc_model->check) ? "Ok" : "Error!");
     }
+    printf("\n");
 }

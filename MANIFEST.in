@@ -8,7 +8,8 @@ prune docs/_build
 
 graft include
 graft src
-graft samples
+exclude src/crc/_platform/*.pyd
+graft examples
 
 graft tests
 exclude tests/_info_.txt tests/_report_.txt

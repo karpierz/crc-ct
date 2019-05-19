@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.0.0rc2 (2019-05-19)
+---------------------
+- Changes and fixes for support of Python2.
+
 1.0.0rc1 (2019-05-18)
 ---------------------
 - C API has been changed in one place: crc_finalize() -> crc_final().

@@ -8,11 +8,15 @@ import sys
 from os import path
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
+from distutils.sysconfig import get_python_inc
+
+PY2 = sys.version_info[0] <= 2
 
 class BuildExt(build_ext):
 
     compile_args = {
-        "msvc": ["/O2", "/WX", "/wd4996"],
+        "msvc": ["/O2", "/WX", "/wd4996"] +
+               (["/I" + path.join(get_python_inc(), "C99")] if PY2 else []),
         "unix": ["-O3", "-g0", "-ffast-math"],
     }
     link_args = {
@@ -32,14 +36,19 @@ class BuildExt(build_ext):
             ext.extra_compile_args = compile_args
         for ext in self.extensions:
             ext.extra_link_args = link_args
-        super(BuildExt, self).build_extensions()
+        build_ext.build_extensions(self)
 
 ext_modules = [Extension(name="crc._platform.crc",
+                         language="c",
                          sources=["src/crc/crc.c",
                                   "src/crc/crc_table.c",
                                   "src/crc/crc_update.c",
                                   "src/crc/crc_py.c"],
-                         language="c")]
+                         depends=["include/crc/crc.h",
+                                  "src/crc/crc.def",
+                                  "src/crc/crc_defs.h",
+                                  "src/crc/crc_table.h",
+                                  "src/crc/crc_update.h"])]
 
 top_dir = path.dirname(path.abspath(__file__))
 with open(path.join(top_dir, "src", "crc", "__about__.py")) as f:
