@@ -1,9 +1,9 @@
-jtypes.jvm documentation
-========================
+crc documentation
+=================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Parts of the documentation:
+   :caption: Contents:
 
    README
    install
