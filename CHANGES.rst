@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.0.0rc3 (2019-11-07)
+---------------------
+- Drop support for Python2.
+- Add support for Python 3.8.
+- Setup update and cleanup.
+
 1.0.0rc2 (2019-05-19)
 ---------------------
 - Changes and fixes for support of Python2.

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 1994-2019 Adam Karpierz
+ * Licensed under the zlib/libpng License
+ * https://opensource.org/licenses/zlib/
+ */
 
 #include <stdint.h>
 #include <stdio.h>

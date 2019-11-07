@@ -1,22 +1,15 @@
 # Copyright (c) 1994-2019 Adam Karpierz
 # Licensed under the zlib/libpng License
-# http://opensource.org/licenses/zlib/
+# https://opensource.org/licenses/zlib/
 
-from __future__ import absolute_import
-
-import sys
 from os import path
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
-from distutils.sysconfig import get_python_inc
-
-PY2 = sys.version_info[0] <= 2
 
 class BuildExt(build_ext):
 
     compile_args = {
-        "msvc": ["/O2", "/WX", "/wd4996"] +
-               (["/I" + path.join(get_python_inc(), "C99")] if PY2 else []),
+        "msvc": ["/O2", "/WX", "/wd4996"],
         "unix": ["-O3", "-g0", "-ffast-math"],
     }
     link_args = {

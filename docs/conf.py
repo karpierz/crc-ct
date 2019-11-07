@@ -2,7 +2,7 @@
 #
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
-# http://www.sphinx-doc.org/en/master/config
+# https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 import sys
 import os
@@ -32,9 +32,6 @@ project   = about.__title__
 copyright = about.__copyright__
 author    = about.__author__
 
-# The short X.Y version
-version = '{0.major}.{0.minor}'.format(about.__version_info__)
-
 # The full version, including alpha/beta/rc tags
 release = about.__version__
 
@@ -58,6 +55,9 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.napoleon',
 ]
+
+# Needed for e.g. linkcheck builder
+tls_verify = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -92,6 +92,12 @@ html_static_path = ['_static']
 
 
 # -- Extension configuration -------------------------------------------------
+
+# -- Options for apidoc extension --------------------------------------------
+
+apidoc_separate_modules = True
+apidoc_module_first = True
+apidoc_output_dir = 'api'
 
 # -- Options for intersphinx extension ---------------------------------------
 

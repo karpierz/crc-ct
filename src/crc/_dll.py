@@ -1,6 +1,6 @@
 # Copyright (c) 1994-2019 Adam Karpierz
 # Licensed under the zlib/libpng License
-# http://opensource.org/licenses/zlib/
+# https://opensource.org/licenses/zlib/
 
 from ._platform import DLL_PATH, DLL
 

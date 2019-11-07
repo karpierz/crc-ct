@@ -1,10 +1,8 @@
 # Copyright (c) 1994-2019 Adam Karpierz
 # Licensed under the zlib/libpng License
-# http://opensource.org/licenses/zlib/
+# https://opensource.org/licenses/zlib/
 
 """Public Python API of CRC package."""
-
-from __future__ import absolute_import
 
 import ctypes as ct
 import itertools
