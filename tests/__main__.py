@@ -9,7 +9,6 @@ from . import test_dir, top_dir
 
 
 def main(argv=sys.argv):
-
     print("Running tests", "\n", file=sys.stderr)
     tests = unittest.defaultTestLoader.discover(start_dir=test_dir,
                                                 top_level_dir=top_dir)
