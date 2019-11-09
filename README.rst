@@ -75,5 +75,6 @@ Authors
 * Adam Karpierz <adam@karpierz.net>
 
 .. |package| replace:: crc-ct
+.. |package_bold| replace:: **crc-ct**
 .. |respository| replace:: https://github.com/karpierz/crc-ct.git
 .. _development page: https://github.com/karpierz/crc-ct/

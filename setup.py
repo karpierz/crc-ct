@@ -6,6 +6,8 @@ from os import path
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 
+top_dir = path.dirname(path.abspath(__file__))
+
 class BuildExt(build_ext):
 
     compile_args = {
@@ -43,7 +45,6 @@ ext_modules = [Extension(name="crc._platform.crc",
                                   "src/crc/crc_table.h",
                                   "src/crc/crc_update.h"])]
 
-top_dir = path.dirname(path.abspath(__file__))
 with open(path.join(top_dir, "src", "crc", "__about__.py")) as f:
     class about: exec(f.read(), None)
 
