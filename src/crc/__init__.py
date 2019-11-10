@@ -7,6 +7,7 @@
 import ctypes as ct
 import itertools
 
+from .__about__ import * ; del __about__
 from ._platform import CFUNC
 from ._dll      import dll
 
