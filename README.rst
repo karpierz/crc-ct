@@ -13,7 +13,7 @@ Installation
 
 Prerequisites:
 
-+ Python 3.5 or later
++ Python 3.5 or higher
 
   * https://www.python.org/
   * 3.7 is a primary test environment.
