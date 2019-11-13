@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.0rc5 (2019-11-09)
+1.0.0rc5 (2019-11-13)
 ---------------------
 - Drop support for Python2.
 - Add support for Python 3.8.
