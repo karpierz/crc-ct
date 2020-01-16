@@ -1,9 +1,10 @@
 Changelog
 =========
 
-1.0.0rc8 (2020-01-16)
+1.0.0rc9 (2020-01-16)
 ---------------------
 - Fix for missing include stddef.h (for size_t) in crc.h
+- Another fixes for gcc/Linux.
 - Added ReadTheDocs config file.
 - Setup update.
 
