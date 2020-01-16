@@ -1,6 +1,6 @@
-# Copyright (c) 2004-2019 Adam Karpierz
-# Licensed under proprietary License
-# Please refer to the accompanying LICENSE file.
+# Copyright (c) 1994-2020 Adam Karpierz
+# Licensed under the zlib/libpng License
+# https://opensource.org/licenses/zlib
 
 import unittest
 import itertools

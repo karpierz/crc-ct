@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.0.0rc7 (2020-01-16)
+---------------------
+- Added ReadTheDocs config file.
+- Setup update.
+
 1.0.0rc6 (2019-11-13)
 ---------------------
 - Drop support for Python2.
