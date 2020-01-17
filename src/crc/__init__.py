@@ -1,6 +1,6 @@
 # Copyright (c) 1994-2020 Adam Karpierz
 # Licensed under the zlib/libpng License
-# https://opensource.org/licenses/zlib
+# https://opensource.org/licenses/Zlib
 
 """Public Python API of CRC package."""
 
