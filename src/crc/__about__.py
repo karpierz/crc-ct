@@ -9,11 +9,13 @@ __all__ = ('__title__', '__summary__', '__uri__', '__version_info__',
 __title__        = "crc-ct"
 __summary__      = "C and Python CRC calculations module."
 __uri__          = "https://pypi.org/project/crc-ct/"
-__version_info__ = type("version_info", (), dict(serial=9,
-                        major=1, minor=0, micro=0, releaselevel="rc"))
+__version_info__ = type("version_info", (), dict(major=1, minor=1, micro=0,
+                        releaselevel="candidate", serial=1))
 __version__      = "{0.major}.{0.minor}.{0.micro}{1}{2}".format(__version_info__,
-                   dict(final="", alpha="a", beta="b", rc="rc")[__version_info__.releaselevel],
-                   "" if __version_info__.releaselevel == "final" else __version_info__.serial)
+                   dict(alpha="a", beta="b", candidate="rc", final="",
+                        post=".post", dev=".dev")[__version_info__.releaselevel],
+                   __version_info__.serial
+                   if __version_info__.releaselevel != "final" else "")
 __author__       = "Adam Karpierz"
 __maintainer__   = "Adam Karpierz"
 __email__        = "adam@karpierz.net"

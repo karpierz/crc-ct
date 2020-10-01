@@ -7,9 +7,10 @@
 import ctypes as ct
 import itertools
 
-from .__about__ import * ; del __about__
+from .__about__ import *  # noqa
 from ._platform import CFUNC
 from ._dll      import dll
+del __about__, _platform, _dll
 
 class FILE(ct.Structure): pass
 

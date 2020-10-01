@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.1.0rc1 (2020-09-30)
+---------------------
+- Add support for Python 3.9.
+- Drop support for Python 3.5.
+- General update and cleanup.
+
 1.0.0rc9 (2020-01-16)
 ---------------------
 - Fix for missing include stddef.h (for size_t) in crc.h

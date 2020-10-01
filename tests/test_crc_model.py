@@ -8,7 +8,7 @@ import itertools
 import crc
 
 
-class TypeHandlerABCTestCase(unittest.TestCase):
+class CrcTestCase(unittest.TestCase):
 
     def setUp(self):
 

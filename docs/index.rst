@@ -3,12 +3,11 @@ crc documentation
 
 .. include:: README.rst
 
-Parts of the documentation
-==========================
+Contents
+========
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
    install.rst
    userguide.rst

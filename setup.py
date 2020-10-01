@@ -3,6 +3,8 @@
 # https://opensource.org/licenses/Zlib
 
 from os import path
+from io import open
+from glob import glob
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 
@@ -45,7 +47,8 @@ ext_modules = [Extension(name="crc._platform.crc",
                                   "src/crc/crc_table.h",
                                   "src/crc/crc_update.h"])]
 
-with open(path.join(top_dir, "src", "crc", "__about__.py")) as f:
+with open(glob(path.join(top_dir, "src/*/__about__.py"))[0],
+          encoding="utf-8") as f:
     class about: exec(f.read(), None)
 
 setup(

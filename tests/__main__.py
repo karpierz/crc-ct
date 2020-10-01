@@ -13,8 +13,8 @@ def main(argv=sys.argv):
     tests = unittest.defaultTestLoader.discover(start_dir=test_dir,
                                                 top_level_dir=top_dir)
     result = unittest.TextTestRunner(verbosity=1).run(tests)
-    sys.exit(0 if result.wasSuccessful() else 1)
+    return 0 if result.wasSuccessful() else 1
 
 
 if __name__.rpartition(".")[-1] == "__main__":
-    main()
+    sys.exit(main())
