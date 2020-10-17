@@ -6,7 +6,7 @@ from ._platform import DLL_PATH, DLL
 
 try:
     dll = DLL(DLL_PATH)
-except OSError as exc:
+except OSError as exc:  # pragma: no cover
     raise exc
-except Exception as exc:
+except Exception as exc:  # pragma: no cover
     raise OSError("{}".format(exc))
