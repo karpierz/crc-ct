@@ -21,4 +21,4 @@ Install
 
 Should be easy as::
 
-    python -m pip install --upgrade jtypes.jvm
+    python -m pip install --upgrade crc-ct

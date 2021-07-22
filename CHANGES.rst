@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.1.0rc4 (2021-07-20)
+---------------------
+- Setup general update and improvement.
+
 1.1.0rc3 (2020-10-18)
 ---------------------
 - Add support for Python 3.9.

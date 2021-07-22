@@ -1,14 +1,9 @@
-# Copyright (c) 1994-2020 Adam Karpierz
+# Copyright (c) 1994-2021 Adam Karpierz
 # Licensed under the zlib/libpng License
 # https://opensource.org/licenses/Zlib
 
-from os import path
-from io import open
-from glob import glob
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
-
-top_dir = path.dirname(path.abspath(__file__))
 
 class BuildExt(build_ext):
 
@@ -47,23 +42,7 @@ ext_modules = [Extension(name="crc._platform.crc",
                                   "src/crc/crc_table.h",
                                   "src/crc/crc_update.h"])]
 
-with open(glob(path.join(top_dir, "src/*/__about__.py"))[0],
-          encoding="utf-8") as f:
-    class about: exec(f.read(), None)
-
 setup(
-    name             = about.__title__,
-    version          = about.__version__,
-    description      = about.__summary__,
-    url              = about.__uri__,
-    download_url     = about.__uri__,
-
-    author           = about.__author__,
-    author_email     = about.__email__,
-    maintainer       = about.__maintainer__,
-    maintainer_email = about.__email__,
-    license          = about.__license__,
-
     ext_modules = ext_modules,
     cmdclass    = dict(build_ext=BuildExt),
 )

@@ -6,9 +6,16 @@ C and Python (ctypes/cffi-based) CRC calculations module.
 Overview
 ========
 
+`PyPI record`_.
+
+`Documentation`_.
+
 TBD...
 
-`PyPI record`_.
+Usage
+-----
+
+TBD...
 
 Installation
 ============
@@ -65,7 +72,7 @@ or on development mode:
 License
 =======
 
-  | Copyright (c) 1994-2020 Adam Karpierz
+  | Copyright (c) 1994-2021 Adam Karpierz
   | Licensed under the zlib/libpng License
   | https://opensource.org/licenses/Zlib
   | Please refer to the accompanying LICENSE file.
@@ -78,5 +85,6 @@ Authors
 .. |package| replace:: crc-ct
 .. |package_bold| replace:: **crc-ct**
 .. |respository| replace:: https://github.com/karpierz/crc-ct.git
-.. _development page: https://github.com/karpierz/crc-ct/
+.. _development page: https://github.com/karpierz/crc-ct
 .. _PyPI record: https://pypi.org/project/crc-ct/
+.. _Documentation: https://crc-ct.readthedocs.io/

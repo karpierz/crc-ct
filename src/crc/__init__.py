@@ -1,4 +1,4 @@
-# Copyright (c) 1994-2020 Adam Karpierz
+# Copyright (c) 1994-2021 Adam Karpierz
 # Licensed under the zlib/libpng License
 # https://opensource.org/licenses/Zlib
 
@@ -7,10 +7,9 @@
 import ctypes as ct
 import itertools
 
-from .__about__ import *  # noqa
-from ._platform import CFUNC
-from ._dll      import dll
-del __about__, _platform, _dll
+from .__about__ import *     ; del __about__  # noqa
+from ._platform import CFUNC ; del _platform
+from ._dll      import dll   ; del _dll
 
 class FILE(ct.Structure): pass
 
