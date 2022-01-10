@@ -7,8 +7,8 @@
 import ctypes as ct
 import itertools
 
-from ._platform import CFUNC ; del _platform
-from ._dll      import dll   ; del _dll
+from ._platform import CFUNC
+from ._dll      import dll
 
 class FILE(ct.Structure): pass
 
