@@ -1,7 +1,7 @@
 /**
  * Filename: \file
  *
- * Copyright (c) 1994-2021 Adam Karpierz
+ * Copyright (c) 1994-2022 Adam Karpierz
  * Licensed under the zlib/libpng License
  * https://opensource.org/licenses/Zlib
  *
@@ -12,13 +12,8 @@
 
 #include <Python.h>
 
-#if PY_MAJOR_VERSION >= 3
-  #define MODINIT_FUNC(name) PyInit_##name(void)
-  #define MODINIT_RETURN(v) v
-#else
-  #define MODINIT_FUNC(name) init##name(void)
-  #define MODINIT_RETURN(v)
-#endif
+#define MODINIT_FUNC(name) PyInit_##name(void)
+#define MODINIT_RETURN(v) v
 
 PyMODINIT_FUNC MODINIT_FUNC(crc)
 {
