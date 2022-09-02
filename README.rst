@@ -6,11 +6,11 @@ C and Python (ctypes/cffi-based) CRC calculations module.
 Overview
 ========
 
+TBD...
+
 `PyPI record`_.
 
 `Documentation`_.
-
-TBD...
 
 Usage
 -----

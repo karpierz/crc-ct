@@ -10,11 +10,12 @@ import ctypes as ct
 
 this_dir = os.path.dirname(os.path.abspath(__file__))
 
-dll_suffix = (("" if sys.version_info[0] <= 2 else
-               "." + platform.python_implementation()[:2].lower() +
-               sysconfig.get_python_version().replace(".","") + "-" +
-               sysconfig.get_platform().replace("-","_")) +
-              (sysconfig.get_config_var("EXT_SUFFIX") or ".pyd"))
+dll_suffix = (("" if platform.python_implementation() == 'PyPy'
+               or sys.version_info[0] <= 2 or sys.version_info[:2] >= (3, 8)
+               else ("." + platform.python_implementation()[:2].lower()
+               + sysconfig.get_python_version().replace(".", "") + "-"
+               + sysconfig.get_platform().replace("-", "_")))
+              + (sysconfig.get_config_var("EXT_SUFFIX") or ".pyd"))
 
 DLL_PATH = os.path.join(this_dir, "crc" + dll_suffix)
 
@@ -26,5 +27,8 @@ def DLL(*args, **kargs):
     finally:
         windll.kernel32.SetDllDirectoryA(None)
 
-from ctypes  import CFUNCTYPE   as CFUNC
-from _ctypes import FreeLibrary as dlclose
+try:
+    from _ctypes import FreeLibrary as dlclose  # noqa: E402,N813
+except ImportError:
+    dlclose = lambda handle: 0
+from ctypes  import CFUNCTYPE as CFUNC  # noqa: E402

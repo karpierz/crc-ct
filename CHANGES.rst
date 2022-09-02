@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.2.0 (2022-08-02)
+------------------
+- Add support for Python 3.10 and 3.11
+- Add support for PyPy 3.7, 3.8 and 3.9
+- Setup update (currently based mainly on pyproject.toml).
+
 1.1.0 (2022-01-10)
 ------------------
 - Drop support for Python 3.6.

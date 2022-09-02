@@ -44,7 +44,7 @@ class model_t(ct.Structure):
     ("check",  crc_t),       # CRC for the ASCII bytes "123456789".
     # Internals
     ("_crc_table", crc_t * 256),
-    ("_crc_update_func", 
+    ("_crc_update_func",
      CFUNC(crc_t, ct.c_void_p, ct.c_size_t, ct.POINTER(crc_t), crc_t)),
 ]
 
