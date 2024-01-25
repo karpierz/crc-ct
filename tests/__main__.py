@@ -1,6 +1,6 @@
-# Copyright (c) 1994-2022 Adam Karpierz
+# Copyright (c) 1994 Adam Karpierz
 # Licensed under the zlib/libpng License
-# https://opensource.org/licenses/Zlib
+# https://opensource.org/license/zlib
 
 import unittest
 import sys

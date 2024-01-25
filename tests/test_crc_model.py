@@ -1,6 +1,6 @@
-# Copyright (c) 1994-2022 Adam Karpierz
+# Copyright (c) 1994 Adam Karpierz
 # Licensed under the zlib/libpng License
-# https://opensource.org/licenses/Zlib
+# https://opensource.org/license/zlib
 
 import unittest
 import itertools
@@ -56,7 +56,7 @@ class CrcTestCase(unittest.TestCase):
             self.assertEqual(crc_result, crc_model.check)
             print("{:>22}: {:016X}".format(crc_model.name.decode("utf-8"), crc_result))
         print()
- 
+
     def test_predefined_models_by_name(self):
         """Test of predefined CRC models by model name"""
         for name in self.crc_predefined_model_names:
@@ -68,7 +68,7 @@ class CrcTestCase(unittest.TestCase):
             self.assertEqual(crc_result, crc_model.check)
             print("{:>22}: {:016X}".format(crc_model.name.decode("utf-8"), crc_result))
         print()
- 
+
     def test_user_models_by_name(self):
         """Test of user-defined CRC models by model name"""
         for name in self.crc_model_names:

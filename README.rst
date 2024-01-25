@@ -22,10 +22,9 @@ Installation
 
 Prerequisites:
 
-+ Python 3.7 or higher
++ Python 3.8 or higher
 
   * https://www.python.org/
-  * 3.7 is a primary test environment.
 
 + pip and setuptools
 
@@ -47,7 +46,7 @@ Prerequisites:
 
     python -m pip install --upgrade tox
 
-Visit `development page`_.
+Visit `Development page`_.
 
 Installation from sources:
 
@@ -72,9 +71,9 @@ or on development mode:
 License
 =======
 
-  | Copyright (c) 1994-2022 Adam Karpierz
+  | Copyright (c) 1994-2024 Adam Karpierz
   | Licensed under the zlib/libpng License
-  | https://opensource.org/licenses/Zlib
+  | https://opensource.org/license/zlib
   | Please refer to the accompanying LICENSE file.
 
 Authors
@@ -85,6 +84,6 @@ Authors
 .. |package| replace:: crc-ct
 .. |package_bold| replace:: **crc-ct**
 .. |respository| replace:: https://github.com/karpierz/crc-ct.git
-.. _development page: https://github.com/karpierz/crc-ct
+.. _Development page: https://github.com/karpierz/crc-ct
 .. _PyPI record: https://pypi.org/project/crc-ct/
 .. _Documentation: https://crc-ct.readthedocs.io/

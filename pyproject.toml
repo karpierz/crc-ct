@@ -1,16 +1,21 @@
-# Copyright (c) 1994-2022 Adam Karpierz
+# Copyright (c) 1994 Adam Karpierz
 # Licensed under the zlib/libpng License
-# https://opensource.org/licenses/Zlib
+# https://opensource.org/license/zlib
 
 [build-system]
 build-backend = 'setuptools.build_meta'
-requires = ['setuptools>=63.2.0', 'wheel>=0.37.1', 'packaging>=21.3.0', 'tox>=3.25.1']
+requires = ['setuptools>=68.2.2', 'wheel>=0.42.0', 'packaging>=23.2.0', 'tox>=4.11.3']
 
 [project]
 name        = 'crc-ct'
-version     = '1.2.0'
+version     = '1.2.1'
 description = 'C and Python CRC calculations module.'
-license = { text = 'zlib/libpng License ; https://opensource.org/licenses/Zlib' }
+urls.Homepage      = 'https://pypi.org/project/crc-ct/'
+urls.Documentation = 'https://crc-ct.readthedocs.io/'
+urls.Download      = 'https://pypi.org/project/crc-ct/'
+urls.Source        = 'https://github.com/karpierz/crc-ct'
+urls.Issues        = 'https://github.com/karpierz/crc-ct/issues'
+license = { text = 'zlib/libpng License ; https://opensource.org/license/zlib' }
 authors = [
     { name  = 'Adam Karpierz' },
     { email = 'adam@karpierz.net' },
@@ -28,51 +33,46 @@ classifiers = [
     'Natural Language :: Polish',
     'Programming Language :: Python',
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.7',
     'Programming Language :: Python :: 3.8',
     'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
     'Programming Language :: Python :: 3 :: Only',
     'Programming Language :: Python :: Implementation :: CPython',
     'Programming Language :: Python :: Implementation :: PyPy',
-    'Programming Language :: Python :: Implementation :: Stackless',
     'Programming Language :: C',
     'Topic :: Software Development :: Libraries :: Python Modules',
 ]
-requires-python = '>=3.7.0,<4.0.0'
+requires-python = '>=3.8.1,<4.0.0'
 dependencies = [
     # mandatory
-    'setuptools>=63.2.0',
-    'pkg_about>=1.0.7',
+    'setuptools>=68.2.2',
+    'pkg-about>=1.1.2',
     # others
 ]
 dynamic = ['readme']
 [project.optional-dependencies]
 doc = [
-    'docutils>=0.14,<0.19',
-    'Sphinx>=4.5.0',
+    'Sphinx>=7.1.2',
+    'sphinx-toolbox>=3.5.0',
     'sphinx-tabs>=3.4.1',
-    'sphinx_copybutton>=0.5.0',
-    'sphinxcontrib-spelling>=7.6.0',
+    'sphinx-copybutton>=0.5.1',
+    'sphinxcontrib-spelling>=7.7.0',
+    'sphinx-lint>=0.6.7',
     'restructuredtext-lint>=1.4.0',
-    'nbsphinx>=0.8.9',
+    'nbsphinx>=0.8.10',
 ]
 test = [
-    'deepdiff>=5.8.1',
+    'deepdiff>=6.7.1',
+    'rich>=13.7.0',
 ]
-[project.urls]
-Homepage      = 'https://pypi.org/project/crc-ct/'
-Documentation = 'https://crc-ct.readthedocs.io/'
-Download      = 'https://pypi.org/project/crc-ct/'
-Source        = 'https://github.com/karpierz/crc-ct'
-Issues        = 'https://github.com/karpierz/crc-ct/issues'
 
 [project.scripts]
-#crc-cli = 'crc.__main__:main'
+#'crc-cli' = 'crc.__main__:main'
 
 [project.gui-scripts]
-#crc-gui = 'crc:main_gui'
+#'crc-gui' = 'crc:main_gui'
 
 #[project.entry-points.'crc.magical']
 #epoint = 'crc:main_epoint'
@@ -84,7 +84,7 @@ readme = { file = ['README.rst', 'CHANGES.rst'], content-type = 'text/x-rst; cha
 license-files = ['LICENSE']
 include-package-data = true
 platforms = ['any']
-zip-safe = true
+zip-safe = false
 
 [tool.setuptools.packages.find]
 namespaces = false
@@ -98,6 +98,12 @@ where = ['src']
 crc = [
 ]
 
+[tool.setuptools.exclude-package-data]
+'*' = ['*.c','*.h','*.cpp','*.hpp','*.cxx','*.hxx','*.pyx','*.pxd']
+crc = [
+    '*.def',
+]
+
 [tool.coverage.run]
 source = [
     'crc',
@@ -106,18 +112,16 @@ source = [
 omit = [
 ]
 data_file = '.tox/coverage/.coverage'
+plugins = ['covdefaults']
 
 [tool.coverage.report]
 exclude_lines = [
     # Regexes
     # Have to re-enable the standard pragma
-    'pragma: no cover',
-    'if\s+self\.debug\s+:',
-    'if\s+__debug__\s+:',
-    'raise (AssertionError|NotImplementedError)',
-    'if\s+(0|False)\s*:',
-    '''if\s+__name__.*\s*==\s*'__main__'\s*:''',
-    'if\s+__name__.*\s*==\s*"__main__"\s*:',
+    '^\s*if\s+self\.debug\s*:',
+    '^\s*if\s+__debug__\s*:',
+    '^\s*if\s+(0|False)\s*:',
+    '''if\s+__name__.*\s*==\s*['"]__main__['"]\s*:''',
     '^\s*@unittest\.skip\(',
     '^\s*@unittest\.skipIf\(sys\.platform\.startswith\("win"\)',
 ]
@@ -153,3 +157,143 @@ count = true
 #show-source
 #verbose
 #quiet
+
+#
+# Configuration(s) for tox
+#
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py{38,39,310,311,312}, pypy{39,310}win, docs
+labels =
+    py = py{38,39,310,311,312}, pypy{39,310}win
+    prepare = prepare
+    coverage = coverage
+    lint = lint
+    docs = docs
+    build  = py{38,39,310,311,312}, pypy{39,310}win, docs, py{38,39,310,311,312}-build, pypy{39,310}win-build, build
+    deploy = py{38,39,310,311,312}, pypy{39,310}win, docs, py{38,39,310,311,312}-build, pypy{39,310}win-build, build, publish
+minversion = 4.11.3
+skip_missing_interpreters = true
+requires =
+    {[base]deps}
+    virtualenv>=20.25.0
+    tox-backtick>=0.4.2
+    tox-tags>=0.2.0
+
+[base]
+basepython = python3.11
+deps =
+    pip>=23.3.2
+    setuptools>=68.2.2
+    wheel>=0.42.0
+packagesubdir = crc
+
+[testenv]
+passenv = WINDIR
+    ProgramFiles
+    ProgramFiles(x86)
+setenv =
+    PYTHONDONTWRITEBYTECODE = 1
+commands =
+    {envpython} --version
+    {envpython} -m tests {posargs}
+extras = test
+deps =
+    {[base]deps}
+
+[testenv:pypy39win]
+basepython = C:\\PyPy39\\pypy.exe
+
+[testenv:pypy310win]
+basepython = C:\\PyPy310\\pypy.exe
+
+[testenv:prepare]
+basepython = {[base]basepython}
+skip_install = true
+allowlist_externals =
+    cmd
+    .build
+commands =
+    cmd /C if exist .build.cmd .build.cmd
+
+[testenv:coverage]
+basepython = {[base]basepython}
+commands =
+    {envpython} -m coverage erase
+    -{envpython} -m coverage run -m tests {posargs}
+    {envpython} -m coverage report
+    {envpython} -m coverage html
+deps =
+    {[testenv]deps}
+    coverage>=7.4.0
+    covdefaults>=2.3.0
+    diff-cover>=7.7.0
+
+[testenv:docs]
+basepython = {[base]basepython}
+commands =
+    {envpython} -m sphinxlint --ignore .tox --ignore build --ignore dist
+   #{envpython} -m sphinx.apidoc -f {envsitepackagesdir}/{[base]packagesubdir}
+    {envpython} -m sphinx.cmd.build -W -a -b html -E   ./docs ./build/docs/html
+    {envpython} -m sphinx.cmd.build -W -a -b linkcheck ./docs ./build/docs/html
+    {envpython} -m sphinx.cmd.build -W -a -b doctest   ./docs ./build/docs/html
+extras = doc
+deps =
+
+[testenv:py{38,39,310,311,312}-build]
+#depends = {envname}
+setenv =
+    {[testenv]setenv}
+    PKG_PVER=`{envpython} -W ignore -c "import platform ; print(''.join(platform.python_version_tuple()[:2]), end='')" 2> nul`
+    PKG_NAME=`{envpython} -W ignore -c "import setuptools ; setuptools._distutils.core._setup_stop_after='config' ; print(setuptools.setup().metadata.get_name(),     end='')" 2> nul`
+    PKG_DIST=`{envpython} -W ignore -c "import setuptools ; setuptools._distutils.core._setup_stop_after='config' ; print(setuptools.setup().metadata.get_fullname(), end='')" 2> nul`
+commands =
+    {envpython} -W ignore setup.py --quiet bdist_wheel
+
+[testenv:pypy{39,310}win-build]
+#depends = {envname}
+basepython =
+    pypy39win:  {[testenv:pypy39win]basepython}
+    pypy310win: {[testenv:pypy310win]basepython}
+setenv   = {[testenv:py311-build]setenv}
+commands =
+    {envpython} -W ignore setup.py --quiet bdist_wheel
+
+[testenv:build]
+depends = py{38,39,310,311,312}, pypy{39,310}win, docs, py{38,39,310,311,312}-build, pypy{39,310}win-build
+basepython = {[base]basepython}
+commands =
+    {envpython} -W ignore setup.py --quiet sdist --formats=zip
+    # check out for PyPi
+    {envpython} -m twine check dist/*
+deps =
+    {[testenv]deps}
+    twine>=4.0.2
+
+[testenv:publish]
+depends = build
+basepython = {[base]basepython}
+skip_install = true
+commands =
+    # publish on PyPi
+    {envpython} -m twine upload dist/*
+extras =
+deps =
+    twine>=4.0.2
+
+[testenv:lint]
+basepython = {[base]basepython}
+commands =
+    {envpython} -m flake8 {envsitepackagesdir}/{[base]packagesubdir}/
+extras =
+deps =
+    {[testenv]deps}
+    flake8>=7.0.0
+    flake8-pyproject>=1.2.3
+    flake8-docstrings>=1.7.0
+    pep8-naming>=0.13.3
+    flake8-builtins>=2.2.0
+    flake8-deprecated>=2.2.1
+"""
