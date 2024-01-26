@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.2.2 (2024-01-25)
+------------------
+- Cleanup.
+
 1.2.1 (2024-01-22)
 ------------------
 - Tox configuration has been moved to pyproject.toml

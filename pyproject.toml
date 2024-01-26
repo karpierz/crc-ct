@@ -8,7 +8,7 @@ requires = ['setuptools>=68.2.2', 'wheel>=0.42.0', 'packaging>=23.2.0', 'tox>=4.
 
 [project]
 name        = 'crc-ct'
-version     = '1.2.1'
+version     = '1.2.2'
 description = 'C and Python CRC calculations module.'
 urls.Homepage      = 'https://pypi.org/project/crc-ct/'
 urls.Documentation = 'https://crc-ct.readthedocs.io/'
