@@ -179,7 +179,7 @@ skip_missing_interpreters = true
 requires =
     {[base]deps}
     virtualenv>=20.25.0
-    tox-backtick>=0.4.2
+    tox-backtick>=0.4.3
     tox-tags>=0.2.0
 
 [base]
