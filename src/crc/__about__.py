@@ -1,6 +1,5 @@
 # Copyright (c) 1994 Adam Karpierz
-# Licensed under the zlib/libpng License
-# https://opensource.org/license/zlib
+# SPDX-License-Identifier: Zlib
 
 __import__("pkg_about").about("crc-ct")
-__copyright__ = f"Copyright (c) 1994-2022 {__author__}"  # noqa
+__copyright__ = f"Copyright (c) 1994-2024 {__author__}"  # noqa

@@ -1,7 +1,6 @@
 /**
  * Copyright (c) 1994 Adam Karpierz
- * Licensed under the zlib/libpng License
- * https://opensource.org/license/zlib
+ * SPDX-License-Identifier: Zlib
  */
 
 #include <stdint.h>
