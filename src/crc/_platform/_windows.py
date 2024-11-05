@@ -18,11 +18,11 @@ dll_suffix = (("" if platform.python_implementation() == 'PyPy'
 
 DLL_PATH = os.path.join(this_dir, "crc" + dll_suffix)
 
-def DLL(*args, **kargs):
+def DLL(*args, **kwargs):
     from ctypes import windll, WinDLL
     windll.kernel32.SetDllDirectoryA(os.path.dirname(args[0]).encode("utf-8"))
     try:
-        return WinDLL(*args, **kargs)
+        return WinDLL(*args, **kwargs)
     finally:
         windll.kernel32.SetDllDirectoryA(None)
 
