@@ -83,7 +83,7 @@ Authors
 
 .. |package| replace:: crc-ct
 .. |package_bold| replace:: **crc-ct**
-.. |copyright| replace:: Copyright (c) 1994-2024 Adam Karpierz
+.. |copyright| replace:: Copyright (c) 1994-2025 Adam Karpierz
 .. |respository| replace:: https://github.com/karpierz/crc-ct.git
 .. _Development page: https://github.com/karpierz/crc-ct
 .. _PyPI record: https://pypi.org/project/crc-ct/

@@ -29,8 +29,7 @@ class CrcTestCase(unittest.TestCase):
         self.crc_predefined_model_names = [crc_model.name.decode("utf-8")
                                            for crc_model in crc.predefined_models]
         self.crc_model_names = []
-        for idx in itertools.count():
-            crc_model = self.crc_models[idx]
+        for crc_model in self.crc_models:  # pragma: no cover
             if crc_model.width == 0: break
             self.crc_model_names.append(crc_model.name.decode("utf-8"))
 
@@ -46,8 +45,7 @@ class CrcTestCase(unittest.TestCase):
 
     def test_user_models(self):
         """Test of user-defined CRC models"""
-        for idx in itertools.count():
-            crc_model = self.crc_models[idx]
+        for crc_model in self.crc_models:  # pragma: no cover
             if crc_model.width == 0: break
             crc_result = crc.init(crc_model)
             crc_result = crc.update(crc_model, self.check_seq, 9, crc_result)

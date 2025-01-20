@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.3.4 (2025-01-20)
+------------------
+- Copyright year update.
+- Setup (dependencies) update.
+
 1.3.3 (2024-12-13)
 ------------------
 - Source distribution (\*.tar.gz now) is compliant with PEP-0625.
@@ -47,18 +52,10 @@ Changelog
 
 1.1.0 (2022-01-10)
 ------------------
-- Drop support for Python 3.6.
-- Copyright year update.
-- Setup update.
-
-1.1.0rc4 (2021-07-20)
----------------------
-- Setup general update and improvement.
-
-1.1.0rc3 (2020-10-18)
----------------------
 - Add support for Python 3.9.
-- Drop support for Python 3.5.
+- Drop support for Python 3.5 and 3.6.
+- Copyright year update.
+- Setup general update and improvement.
 - General update and cleanup.
 - Fixed docs setup.
 
@@ -82,13 +79,8 @@ Changelog
   folowing way; crc.name instead of crc.crc_name in most of cases.
 - Python doc-strings update.
 - Fix for error in Python definition of crc.predefined_models.
-- Python tests have been improved, enhanced and fixed.
-- Changes and fixes for support of Python2.
-- Minor setup improvement.
-
-1.0.0b2 (2019-05-13)
---------------------
 - Python tests have been added.
+- Changes and fixes for support of Python2.
 - Minor setup improvements.
 
 1.0.0b1 (2019-05-12)

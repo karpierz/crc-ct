@@ -6,6 +6,7 @@ import os
 import platform
 import sysconfig
 import ctypes as ct
+from functools import partial
 
 this_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -16,18 +17,10 @@ dll_suffix = (("" if platform.python_implementation() == 'PyPy'
                + sysconfig.get_platform().replace("-", "_")))
               + (sysconfig.get_config_var("EXT_SUFFIX") or ".pyd"))
 
-DLL_PATH = os.path.join(this_dir, "crc" + dll_suffix)
+DLL_PATH = os.path.join(os.path.dirname(this_dir), "crc" + dll_suffix)
 
-def DLL(*args, **kwargs):
-    from ctypes import windll, WinDLL
-    windll.kernel32.SetDllDirectoryA(os.path.dirname(args[0]).encode("utf-8"))
-    try:
-        return WinDLL(*args, **kwargs)
-    finally:
-        windll.kernel32.SetDllDirectoryA(None)
+from ctypes  import CDLL as DLL         # noqa: E402,F401
+from _ctypes import dlclose             # noqa: E402,F401
+from ctypes  import CFUNCTYPE as CFUNC  # noqa: E402,F401
 
-try:
-    from _ctypes import FreeLibrary as dlclose  # noqa: E402,N813
-except ImportError:
-    dlclose = lambda handle: 0
-from ctypes  import CFUNCTYPE as CFUNC  # noqa: E402
+DLL = partial(DLL, mode=ct.RTLD_GLOBAL)

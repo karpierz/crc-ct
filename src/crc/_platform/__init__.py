@@ -5,7 +5,7 @@ import sys
 import os
 import ctypes as ct
 
-from ._platform import is_windows, is_linux, is_macos
+from ._platform import *  # noqa
 
 def defined(varname, __getframe=sys._getframe):
     frame = __getframe(1)
@@ -14,13 +14,13 @@ def defined(varname, __getframe=sys._getframe):
 def from_oid(oid, __cast=ct.cast, __py_object=ct.py_object):
     return __cast(oid, __py_object).value if oid else None
 
-del sys, os, ct
+del sys, os, ct  # noqa: E305
 
-if is_windows:
-    from ._windows import DLL_PATH, DLL, dlclose, CFUNC
-elif is_linux:
-    from ._linux   import DLL_PATH, DLL, dlclose, CFUNC
-elif is_macos:
-    from ._macos   import DLL_PATH, DLL, dlclose, CFUNC
+if is_windows:  # noqa: F405
+    from ._windows import DLL_PATH, DLL, dlclose, CFUNC  # noqa: F401
+elif is_linux:  # noqa: F405
+    from ._linux   import DLL_PATH, DLL, dlclose, CFUNC  # noqa: F401
+elif is_macos:  # noqa: F405
+    from ._macos   import DLL_PATH, DLL, dlclose, CFUNC  # noqa: F401
 else:
     raise ImportError("unsupported platform")

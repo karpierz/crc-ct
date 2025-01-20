@@ -4,7 +4,6 @@
 """Public Python API of CRC package."""
 
 import ctypes as ct
-import itertools
 
 from ._platform import CFUNC
 from ._dll      import dll
@@ -30,7 +29,7 @@ class model_t(ct.Structure):
     of the model algorithm. Most of the fields are model parameters
     which must be set before the first initializing call to each
     function crc.model_t related function.
-    """
+    """  # noqa: D204
     _fields_ = [
     # Parameters
     ("name",   ct.c_char * (32+1)),  # Name of the CRC variant.
@@ -50,9 +49,10 @@ class model_t(ct.Structure):
 # Predefined CRC models.
 #
 predefined_models = (model_t * 1000).in_dll(dll, "crc_predefined_models")
-for size in itertools.count():
-    if predefined_models[size].width == 0: break
+for size, pmodel in enumerate(predefined_models):  # pragma: no cover
+    if pmodel.width == 0: break
 predefined_models = (model_t * size).in_dll(dll, "crc_predefined_models")
+del size, pmodel
 
 model = CFUNC(model_t,
               ct.c_char_p,
@@ -175,4 +175,3 @@ Returns:
 """
 
 del ct
-del itertools
